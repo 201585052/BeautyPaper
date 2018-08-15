@@ -11,3 +11,7 @@ a web application for people to see nice things on PC everyday
 
 [参考效果](https://dailywall.space/)
 
+## 日记
+
+2018/8/15 先学着几个基本的爬取模块的使用和了解下koa2,要解决的问题还有很多，如何异步，async与promise到底怎么用，cheerio模块提取文本的原理？
+
