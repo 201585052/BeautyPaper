@@ -15,3 +15,4 @@ a web application for people to see nice things on PC everyday
 
 2018/8/15 先学着几个基本的爬取模块的使用和了解下koa2,要解决的问题还有很多，如何异步，async与promise到底怎么用，cheerio模块提取文本的原理？
 
+2018/8/16 基本的爬虫差不多ok了，electron也能跑个hello world了，接下来因为比较轻量，所以要用vue试试,于是便看到了一个强大的脚手架electron-vue.先试试水，还不错。这两天要求职真的是，
