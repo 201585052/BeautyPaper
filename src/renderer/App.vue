@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <landing-page></landing-page>
+    <Carousel />
   </div>
 </template>
 
 <script>
-  import LandingPage from '@/components/LandingPage'
+  import Carousel from './components/Carousel'
 
   export default {
-    name: 'my-project',
+    name: 'App',
     components: {
-      LandingPage
+      Carousel
     }
   }
 </script>
 
 <style>
-  /* CSS */
+  body{
+    margin: 0;
+    padding: 0;
+  }
 </style>
