@@ -1,17 +1,23 @@
 <template>
   <div id="topBanner" class="slide">
     <div v-for="(imgUrl, index) in bannerList" v-show="index===mark" :key="index" class="slideshow">
-      <a href="#">
         <img :src=imgUrl>
-      </a>
     </div>
     <div class="bar">
       <span v-for="(item, index) in bannerList" :class="{ 'active':index===mark }" :key="index"></span>
     </div>
+    <div class="cleft"><img src="static/images/left.png"></div>
+    <div class="cright"><img src="static/images/right.png"></div>
   </div>
 </template>
 
 <script>
+  const {ipcRenderer} = require('electron')
+  var recImgs
+  ipcRenderer.on('ping', (e, msgs) => {
+    recImgs = msgs // 注意异步问题，等下载好了才发回来orz
+    console.log(recImgs)
+  })
   export default {
     data () {
       return {
@@ -45,7 +51,7 @@
       margin: 0 auto;
       overflow: hidden;
       position: relative;
-      height: 800px;
+      height: 100vh;
     }
     
     .slideshow {
@@ -54,12 +60,28 @@
     }
     .slideshow img{
       width: 100%;
-      height: 800px;
+      height: 100vh;
     }
     li {
       position: absolute;
     }
-    
+    .cleft{
+      position: absolute;
+      top:45%;
+      cursor: pointer;
+    }
+    .cleft img{
+      width: 10vw;
+    }
+    .cright{
+      position: absolute;
+      top:45%;
+      right: 0;
+      cursor: pointer;
+    }
+    .cright img{
+      width: 10vw;
+    }
     .bar {
       position: absolute;
       width: 100%;
@@ -68,6 +90,7 @@
       z-index: 10;
       text-align: center;
     }
+    
     
     .bar span {
       width: 20px;

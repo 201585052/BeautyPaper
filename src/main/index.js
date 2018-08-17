@@ -1,6 +1,11 @@
 'use strict'
 
 import { app, BrowserWindow } from 'electron'
+import superagent from 'superagent'
+import cheerio from 'cheerio'
+
+const tUrl = 'https://unsplash.com/'
+var imgs = []
 
 /**
  * Set `__static` path to static files in production
@@ -24,6 +29,20 @@ function createWindow () {
     useContentSize: true,
     width: 1000
   })
+  superagent.get(tUrl)
+    .end((err, res) => {
+      if (err) {
+        return console.log(err)
+      }
+      var $ = cheerio.load(res.text)
+      $('._2zEKz').each((index, element) => {
+        var $src = $(element).attr('srcset')
+        imgs.push($src)
+      })
+      mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow.webContents.send('ping', imgs)
+      })
+    })
 
   mainWindow.loadURL(winURL)
 
