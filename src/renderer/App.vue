@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Carousel />
+    <div>{{imgs}}</div>
   </div>
 </template>
 
@@ -11,6 +12,12 @@
     name: 'App',
     components: {
       Carousel
+    },
+    props: {
+      imgs: {
+        type: Array,
+        required: true
+      }
     }
   }
 </script>

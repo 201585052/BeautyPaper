@@ -12,12 +12,6 @@
 </template>
 
 <script>
-  const {ipcRenderer} = require('electron')
-  var recImgs
-  ipcRenderer.on('ping', (e, msgs) => {
-    recImgs = msgs // 注意异步问题，等下载好了才发回来orz
-    console.log(recImgs)
-  })
   export default {
     data () {
       return {
