@@ -1,10 +1,10 @@
 <template>
   <div id="topBanner" class="slide">
-    <div v-for="(imgUrl, index) in bannerList" v-show="index===mark" :key="index" class="slideshow">
+    <div v-for="(imgUrl, index) in imgs" v-show="index===mark" :key="index" class="slideshow">
         <img :src=imgUrl>
     </div>
     <div class="bar">
-      <span v-for="(item, index) in bannerList" :class="{ 'active':index===mark }" :key="index"></span>
+      <span v-for="(item, index) in imgs" :class="{ 'active':index===mark }" :key="index"></span>
     </div>
     <div class="chose">选做桌面</div>
     <div class="cleft" @click="goLeft"><img src="static/images/left.png"></div>
