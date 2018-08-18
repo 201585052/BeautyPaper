@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <Carousel />
-    <div>{{imgs}}</div>
+    <Carousel v-bind:imgs="imgs"/>
   </div>
 </template>
 
