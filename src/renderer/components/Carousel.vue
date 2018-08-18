@@ -17,7 +17,6 @@
     data () {
       return {
         mark: 0,
-        bannerList: this.imgs,
         len: this.imgs.length
       }
     },
