@@ -3,10 +3,15 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import superagent from 'superagent'
 import cheerio from 'cheerio'
+import fs from 'fs'
 
 const tUrl = 'https://unsplash.com/'
+const dir = './images'
 var imgs = []
 
+var download = function (src, dir, filename) {
+  superagent.get(src).pipe(fs.createWriteStream(dir + '/' + filename))
+}
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -40,8 +45,11 @@ function createWindow () {
         imgs.push($src)
       })
       ipcMain.on('asynchronous-message', (event, Id) => {
-        console.log(Id) // prints "ping"
+        console.log(Id) // prints 传来的图片Id
         event.sender.send('asynchronous-reply', imgs)
+        if (Id > 0 && Id !== 'liaoliao') {
+          download(imgs[Id], dir, Math.floor(Math.random() * 1000) + imgs[Id].substr(-3, 4) + '.jpg')
+        }
       })
     })
 
