@@ -6,7 +6,7 @@
     <div class="bar">
       <span v-for="(item, index) in imgs" :class="{ 'active':index===mark }" :key="index"></span>
     </div>
-    <div class="chose">选做桌面</div>
+    <div class="chose" @click="sendId">选做桌面</div>
     <div class="cleft" @click="goLeft"><img src="static/images/left.png"></div>
     <div class="cright" @click="goRight"><img src="static/images/right.png"></div>
   </div>
@@ -41,6 +41,9 @@
       },
       change (i) {
         this.mark = i
+      },
+      sendId () {
+        this.$emit('sendId', this.mark)
       }
     }
   }

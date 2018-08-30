@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Carousel v-bind:imgs="imgs"/>
+    <Carousel v-bind:imgs="imgs" @sendId="getId"/>
   </div>
 </template>
 
@@ -12,10 +12,21 @@
     components: {
       Carousel
     },
+    data () {
+      return {
+        Id: 0
+      }
+    },
     props: {
       imgs: {
         type: Array,
         required: true
+      }
+    },
+    methods: {
+      getId (Id) {
+        this.Id = Id
+        this.$emit('sendId', this.Id)
       }
     }
   }

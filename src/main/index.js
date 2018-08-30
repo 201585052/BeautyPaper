@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import superagent from 'superagent'
 import cheerio from 'cheerio'
 
@@ -39,8 +39,9 @@ function createWindow () {
         var $src = $(element).attr('srcset')
         imgs.push($src)
       })
-      mainWindow.webContents.on('did-finish-load', () => {
-        mainWindow.webContents.send('ping', imgs)
+      ipcMain.on('asynchronous-message', (event, Id) => {
+        console.log(Id) // prints "ping"
+        event.sender.send('asynchronous-reply', imgs)
       })
     })
 
