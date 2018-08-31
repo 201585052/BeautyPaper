@@ -16,3 +16,9 @@ a web application for people to see nice things on PC everyday
 2018/8/28 中间日记有遗漏，求职期笔面高峰期，暂差个调用shell脚本去换壁纸的过程，回来弄～，暂时只有npm run dev 看测试版
 
 2018/8/30 已经实现了在测试环境npm run dev下，点击图片就进行下载，下载后要想的是如何调用shell脚本来切换壁纸
+
+2018/8/31 接下来需要做的改进 
+
+1、全屏化
+2、选做壁纸点击下载之后页面要有回应
+3、针对不同平台调用不同脚本
